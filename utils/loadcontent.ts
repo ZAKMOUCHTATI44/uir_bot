@@ -18,7 +18,7 @@ const main = async () => {
   const vectorStore = await getVectoreStore();
 
   for (const link of links) {
-   
+
     const cheerioLoader = new CheerioWebBaseLoader(link, { selector: "body" });
     const docs = await cheerioLoader.load();
 
@@ -27,7 +27,7 @@ const main = async () => {
     await vectorStore.addDocuments(allSplits);
   }
 
-  const loader = new JSONLoader("./data/faq.json");
+  const loader = new JSONLoader("./data/faq.json", ["/answer"]);
   const loaderTxt = new TextLoader("./data/general.txt");
   const loaderCsv = new CSVLoader("./data/data.csv");
 
@@ -39,8 +39,7 @@ const main = async () => {
   await vectorStore.addDocuments(await splitter.splitDocuments(docsCsv));
   await vectorStore.addDocuments(await splitter.splitDocuments(loaderTxtLoad));
 
-  console.log("DONE")
-
+  console.log("DONE");
 };
 
 main();
