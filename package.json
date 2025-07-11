@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "seed": "NODE_TLS_REJECT_UNAUTHORIZED=0 npx ts-node utils/loadcontent.ts",
+    "start": "pm2 delete chatbotv7; pm2 start --name chatbotv7 \" npx ts-node --transpile-only server.ts\"",
     "dev": "nodemon server.ts"
   },
   "keywords": [],
