@@ -1,0 +1,35 @@
+{
+  "name": "uir-final-inchallech",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "seed": "NODE_TLS_REJECT_UNAUTHORIZED=0 npx ts-node utils/loadcontent.ts",
+    "dev": "nodemon server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "@types/pg": "^8.15.4",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.3.48",
+    "@langchain/core": "^0.3.62",
+    "@langchain/langgraph": "^0.3.7",
+    "@langchain/openai": "^0.5.18",
+    "cheerio": "^1.1.0",
+    "d3-dsv": "^2.0.0",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "langchain": "^0.3.29",
+    "pg": "^8.16.3",
+    "twilio": "^5.7.3",
+    "uuid": "^11.1.0"
+  }
+}

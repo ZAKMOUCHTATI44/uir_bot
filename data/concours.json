@@ -1,0 +1,496 @@
+{
+  "concours": [
+    {
+      "year": "2026",
+      "sections": [
+        {
+          "name": "SCIENCES DE LA SANTÉ",
+          "programs": [
+            {
+              "name": "CONCOURS COMMUN MÉDECINE ET MÉDECINE DENTAIRE",
+              "dates": []
+            },
+            {
+              "name": "LICENCE EN BIOTECHNOLOGIE ET SCIENCES DE LA SANTÉ",
+              "dates": [
+                {
+                  "date": "MERCREDI 07 MAI",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "MARDI 24 JUIN",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "JEUDI 24 JUILLET",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "SAMEDI 30 AOÛT",
+                  "type": "ECRIT + ORAL"
+                }
+              ]
+            },
+            {
+              "name": "GÉNIE BIOMÉDICAL",
+              "dates": [
+                {
+                  "date": "MERCREDI 14 MAI",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "LUNDI 23 JUIN",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "LUNDI 14 JUILLET",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "JEUDI 17 JUILLET",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "MERCREDI 27 AOÛT",
+                  "type": "ECRIT + ORAL"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SCIENCES PARAMÉDICALES",
+          "programs": [
+            {
+              "name": "INFIRMIER POLYVALENT",
+              "dates": [
+                {
+                  "date": "MARDI 06 MAI",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "MERCREDI 23 JUILLET",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "SAMEDI 13 SEPTEMBRE",
+                  "type": "ECRIT + ORAL"
+                }
+              ]
+            },
+            {
+              "name": "INFIRMIER EN ANESTHÉSIE ET RÉANIMATION",
+              "dates": [
+                {
+                  "date": "MARDI 06 MAI",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "MERCREDI 23 JUILLET",
+                  "type": "ECRIT + ORAL"
+                },
+                {
+                  "date": "SAMEDI 13 SEPTEMBRE",
+                  "type": "ECRIT + ORAL"
+                }
+              ]
+            },
+            {
+              "name": "TECHNICIEN D'IMAGERIE MÉDICALE",
+              "dates": [
+                {
+                  "date": "MARDI 06 MAI",
+                  "type": "ETUDE DE DOSSIER * ORAL"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ETUDE DE DOSSIER * ORAL"
+                },
+                {
+                  "date": "MERCREDI 23 JUILLET",
+                  "type": "ETUDE DE DOSSIER * ORAL"
+                },
+                {
+                  "date": "SAMEDI 13 SEPTEMBRE",
+                  "type": "ETUDE DE DOSSIER * ORAL"
+                }
+              ]
+            },
+            {
+              "name": "LICENCE EN NUTRITION ET DIETÉTIQUE",
+              "dates": [
+                {
+                  "date": "MARDI 06 MAI",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                },
+                {
+                  "date": "MERCREDI 23 JUILLET",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                },
+                {
+                  "date": "SAMEDI 13 SEPTEMBRE",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                }
+              ]
+            },
+            {
+              "name": "TECHNICIEN DE LABORATOIRE",
+              "dates": [
+                {
+                  "date": "MARDI 06 MAI",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                },
+                {
+                  "date": "MERCREDI 23 JUILLET",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                },
+                {
+                  "date": "SAMEDI 13 SEPTEMBRE",
+                  "type": "ETUDE DE DOSSIER + ORAL"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RABAT BUSINESS SCHOOL",
+          "programs": [
+            {
+              "name": "IPM",
+              "dates": [
+                {
+                  "date": "MERCREDI 18 JUIN",
+                  "type": "ÉCRIT"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "VENDREDI 4 JUILLET",
+                  "type": "ÉCRIT"
+                },
+                {
+                  "date": "VENDREDI 11 JUILLET",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "PGE1",
+              "dates": [
+                {
+                  "date": "MERCREDI 18 JUIN",
+                  "type": "ÉCRIT"
+                },
+                {
+                  "date": "MERCREDI 25 JUIN",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "ITB",
+              "dates": [
+                {
+                  "date": "SAMEDI 12 AVRIL",
+                  "type": "ÉCRIT"
+                },
+                {
+                  "date": "SAMEDI 19 AVRIL",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "MASTERS RBS ET PGE2",
+              "dates": [
+                {
+                  "date": "SAMEDI 17 MAI",
+                  "type": "ÉCRIT + ORAL"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": "2025",
+      "sections": [
+        {
+          "name": "INGÉNIERIE",
+          "programs": [
+            {
+              "name": "GÉNIE CIVIL",
+              "dates": [
+                {
+                  "date": "SAMEDI 03 MAI",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "DIMANCHE 22 JUIN",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "MERCREDI 16 JUILLET",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "VENDREDI 29 AOÛT",
+                  "type": "ÉCRIT+ORAL"
+                }
+              ]
+            },
+            {
+              "name": "INGÉNIERIE AEROSPATIALE ET AUTOMOBILE",
+              "dates": [
+                {
+                  "date": "SAMEDI 03 MAI",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "DIMANCHE 22 JUIN",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "MERCREDI 16 JUILLET",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "VENDREDI 29 AOÛT",
+                  "type": "ÉCRIT+ORAL"
+                }
+              ]
+            },
+            {
+              "name": "INGÉNIERIE INFORMATIQUE",
+              "dates": [
+                {
+                  "date": "SAMEDI 03 MAI",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "DIMANCHE 22 JUIN",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "MERCREDI 16 JUILLET",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "VENDREDI 29 AOÛT",
+                  "type": "ÉCRIT+ORAL"
+                }
+              ]
+            },
+            {
+              "name": "INGÉNIERIE DE L'ENERGIE",
+              "dates": [
+                {
+                  "date": "SAMEDI 03 MAI",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "DIMANCHE 22 JUIN",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "MERCREDI 16 JUILLET",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "VENDREDI 29 AOÛT",
+                  "type": "ÉCRIT+ORAL"
+                }
+              ]
+            },
+            {
+              "name": "ARCHITECTURE",
+              "dates": [
+                {
+                  "date": "SAMEDI 03 MAI",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "DIMANCHE 04 MAI",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "SAMEDI 21 JUIN",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "DIMANCHE 22 JUIN",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "MERCREDI 16 JUILLET",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "MARDI 15 JUILLET",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "JEUDI 28 AOÛT",
+                  "type": "ÉCRIT+ORAL"
+                },
+                {
+                  "date": "VENDREDI 29 AOÛT",
+                  "type": "ÉCRIT+ORAL"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SCIENCES SOCIALES",
+          "programs": [
+            {
+              "name": "SCIENCES PO",
+              "dates": [
+                {
+                  "date": "SAMEDI 12 AVRIL",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "SAMEDI 10 MAI",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MARDI 17 JUIN",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "VENDREDI 18 JUILLET",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MERCREDI 03 SEPTEMBRE",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "PSYCHOLOGIE",
+              "dates": [
+                {
+                  "date": "SAMEDI 12 AVRIL",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "SAMEDI 10 MAI",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MARDI 17 JUIN",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "VENDREDI 18 JUILLET",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MERCREDI 03 SEPTEMBRE",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "DROIT",
+              "dates": [
+                {
+                  "date": "SAMEDI 12 AVRIL",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "SAMEDI 10 MAI",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MARDI 17 JUIN",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "VENDREDI 18 JUILLET",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MERCREDI 03 SEPTEMBRE",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "ECONOMIE",
+              "dates": [
+                {
+                  "date": "SAMEDI 12 AVRIL",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "SAMEDI 10 MAI",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MARDI 17 JUIN",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "VENDREDI 18 JUILLET",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MERCREDI 03 SEPTEMBRE",
+                  "type": "ORAL"
+                }
+              ]
+            },
+            {
+              "name": "COMMUNICATION & MÉDIAS",
+              "dates": [
+                {
+                  "date": "SAMEDI 12 AVRIL",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "SAMEDI 10 MAI",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MARDI 17 JUIN",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "VENDREDI 18 JUILLET",
+                  "type": "ORAL"
+                },
+                {
+                  "date": "MERCREDI 03 SEPTEMBRE",
+                  "type": "ORAL"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

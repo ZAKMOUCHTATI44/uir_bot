@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  pgvector-db:
+    image: ankane/pgvector:v0.5.1  # 🎯 Version précise de pgvector avec PostgreSQL 16
+    container_name: uir_chat_bot_2
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: uir_chat_bot
+      POSTGRES_PASSWORD: Dv5F0NSl7L1oDRKW3x3N
+      POSTGRES_DB: db_uir
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+
+volumes:
+  pgvector_data:
+
+
+# docker exec -it uir_chat_bot_2 psql -U uir_chat_bot -d db_uir -c "CREATE EXTENSION IF NOT EXISTS vector;"

@@ -1,0 +1,395 @@
+{
+  "university": {
+    "name": "Université Internationale de Rabat",
+    "motto": "THE INNOVATIVE UNIVERSITY",
+    "website": "www.uir.ac.ma",
+    "location": {
+      "campus": "Parc Technopolis Rabat",
+      "address": "Rocade de Rabat-Salé, 11 100 Sala Al Jadida, Maroc",
+      "coordinates": {
+        "latitude": 34.064,
+        "longitude": -6.799
+      }
+    }
+  },
+  "academic_structure": [
+    {
+      "college": "Ingénierie & Architecture",
+      "programs": [
+        {
+          "id": "GC-001",
+          "name": "Génie Civil",
+          "duration": "5 ans (2CPI + 3CI)",
+          "description": "Formation solide en conception, construction et gestion des infrastructures avec approche théorique et pratique.",
+          "admission": {
+            "eligible_bac": [
+              "Bac Sci Mathématiques A",
+              "Bac Sci Mathématiques B",
+              "Bac Sci Physiques",
+              "Bac Sci Vie et Terre",
+              "Bac Sci Technologies Mécanique/Électrique"
+            ],
+            "exams": [
+              {
+                "type": "Écrit",
+                "subjects": ["Mathématiques", "Physique"],
+                "duration": "3h"
+              },
+              {
+                "type": "Oral",
+                "format": "Entretien individuel",
+                "duration": "30min"
+              }
+            ]
+          },
+          "curriculum": {
+            "cycle_preparatoire": [
+              "Mathématiques",
+              "Physique",
+              "Chimie",
+              "Mécanique",
+              "Électricité",
+              "Informatique",
+              "Langues"
+            ],
+            "cycle_ingenieur": [
+              "Résistance des Matériaux",
+              "Béton Armé",
+              "Hydrologie",
+              "Topographie",
+              "Modélisation BIM"
+            ],
+            "credits": "180 ECTS"
+          },
+          "fees": {
+            "annual": 66000,
+            "registration": 10000,
+            "currency": "MAD"
+          },
+          "partnerships": [
+            "Ecole Européenne d'Ingénierie en Génie des Matériaux (EEIGM)",
+            "ENSEM Nancy"
+          ],
+          "career_paths": [
+            "Ingénieur BTP",
+            "Chef de projet construction",
+            "Bureau d'études techniques"
+          ]
+        },
+        {
+          "id": "IAE-002",
+          "name": "Ingénierie Aérospatiale et Automobile",
+          "duration": "5 ans",
+          "double_degree": {
+            "partner": "Mississippi State University",
+            "award": "Master of Science in Mechanical/Aerospace Engineering"
+          }
+        },
+        {
+          "id": "INFO-003",
+          "name": "Ingénierie Informatique",
+          "specializations": [
+            "Cloud Computing",
+            "Cybersécurité",
+            "Big Data & IA",
+            "Génie Logiciel"
+          ]
+        },
+        {
+          "id": "ENERG-004",
+          "name": "Ingénierie de l'Énergie",
+          "key_features": ["Laboratoire smart grids", "Partenariat avec ENGIE"]
+        },
+        {
+          "id": "ARCH-005",
+          "name": "Architecture",
+          "duration": "6 ans",
+          "partnerships": ["ENSA Marne-la-Vallée", "ENSA Nancy"]
+        }
+      ]
+    },
+    {
+      "college": "Sciences Sociales",
+      "programs": [
+        {
+          "id": "DROIT-101",
+          "name": "Droit des Affaires",
+          "duration": "3 ans",
+          "language": "Français/Anglais"
+        },
+        {
+          "id": "ECO-102",
+          "name": "Économie",
+          "research_areas": ["Microéconomie", "Économie internationale"]
+        },
+        {
+          "id": "SCPO-103",
+          "name": "Sciences Politiques",
+          "tracks": [
+            "Relations Internationales",
+            "Économie et Développement",
+            "Cultures et Sociétés"
+          ]
+        },
+        {
+          "id": "PSY-104",
+          "name": "Psychologie",
+          "clinical_training": true
+        },
+        {
+          "id": "COM-105",
+          "name": "Communication & Médias",
+          "partner": "IHECS Belgique"
+        }
+      ]
+    },
+    {
+      "college": "Management",
+      "programs": [
+        {
+          "id": "IPM-201",
+          "name": "International Program in Management",
+          "language_tracks": [
+            { "name": "Standard", "fr": 33, "en": 67 },
+            { "name": "English", "en": 100 }
+          ]
+        },
+        {
+          "id": "ITB-202",
+          "name": "International Trade-Balanced",
+          "aacsb_accredited": true
+        }
+      ]
+    },
+    {
+      "college": "Sciences de la Santé",
+      "programs": [
+        {
+          "id": "MED-301",
+          "name": "Médecine",
+          "duration": "6 ans",
+          "hospital_affiliations": ["CHU Rabat", "Hôpital Militaire"]
+        },
+        {
+          "id": "DENT-302",
+          "name": "Médecine Dentaire",
+          "simulation_labs": 4
+        },
+        {
+          "id": "BIOTECH-303",
+          "name": "Biotechnologie et Sciences de la Santé",
+          "research_focus": ["Génomique", "Bio-informatique"]
+        }
+      ]
+    },
+    {
+      "college": "Sciences Paramédicales",
+      "programs": [
+        {
+          "id": "INF-401",
+          "name": "Infirmier Polyvalent",
+          "clinical_hours": 1200
+        },
+        {
+          "id": "ANES-402",
+          "name": "Infirmier en Anesthésie-Réanimation",
+          "specialized_equipment": [
+            "Simulateurs haute-fidélité",
+            "Salles opératoires simulées"
+          ]
+        },
+        {
+          "id": "LAB-403",
+          "name": "Technicien de Laboratoire",
+          "certification": "ISO 15189"
+        },
+        {
+          "id": "IMAG-404",
+          "name": "Techniques d'Imagerie Médicale",
+          "modalities": ["IRM", "Scanner", "Échographie"]
+        },
+        {
+          "id": "NUTRI-405",
+          "name": "Diététique et Nutrition",
+          "internship_sites": ["Hôpitaux", "Industrie agroalimentaire"]
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "process": {
+      "steps": [
+        "Dépôt de dossier en ligne",
+        "Paiement des frais de concours",
+        "Passage des épreuves écrites/orales",
+        "Publication des résultats",
+        "Inscription administrative"
+      ],
+      "timeline": {
+        "application_period": "Janvier-Avril",
+        "exam_dates": ["Mai", "Juillet", "Août"]
+      }
+    },
+    "requirements": {
+      "documents": [
+        "Relevés de notes Bac",
+        "Copie CIN/passeport",
+        "2 photos d'identité",
+        "Lettre de motivation"
+      ],
+      "language_proficiency": {
+        "french": "DELF B1 minimum",
+        "english": "TOEFL 500+ (pour certains programmes)"
+      }
+    },
+    "fees": {
+      "application": {
+        "single_program": 750,
+        "multiple_programs": 1500,
+        "currency": "MAD"
+      },
+      "registration": 10000
+    }
+  },
+  "financial": {
+    "tuition_ranges": {
+      "sciences_sociales": 62000,
+      "engineering": 66000,
+      "medicine": 120000,
+      "paramedical": 26000,
+      "currency": "MAD/an"
+    },
+    "aid_programs": [
+      {
+        "type": "Bourse sociale",
+        "coverage": "30-70%",
+        "criteria": ["Moyenne ≥ 12/20", "Situation socio-économique"]
+      },
+      {
+        "type": "Prêt bancaire",
+        "providers": [
+          {
+            "bank": "Banque Populaire",
+            "max_amount": 50000,
+            "grace_period": "24 mois post-diplôme"
+          }
+        ]
+      }
+    ]
+  },
+  "international": {
+    "partnerships": {
+      "total": 262,
+      "by_region": {
+        "europe": 57,
+        "north_america": 23,
+        "africa": 45,
+        "asia": 12
+      },
+      "notable_partners": [
+        "Georgia Institute of Technology",
+        "Mississippi State University",
+        "IHECS Bruxelles"
+      ]
+    },
+    "exchange_programs": [
+      {
+        "name": "Erasmus+",
+        "duration": "1-2 semestres",
+        "funding_available": true
+      },
+      {
+        "name": "UIR Global",
+        "destinations": 45
+      }
+    ],
+    "double_degrees": [
+      {
+        "program": "Aérospatial",
+        "partner": "MSU",
+        "degree": "Master of Science"
+      },
+      {
+        "program": "Communication",
+        "partner": "IHECS",
+        "degree": "Master co-diplômé"
+      }
+    ]
+  },
+  "campus_life": {
+    "housing": {
+      "options": [
+        {
+          "type": "Chambre single",
+          "capacity": 1,
+          "price": 2400,
+          "amenities": ["WiFi", "Climatisation"]
+        },
+        {
+          "type": "Chambre double",
+          "capacity": 2,
+          "price": 1800,
+          "amenities": ["Espace de travail partagé"]
+        }
+      ],
+      "facilities": [
+        "Cuisines équipées",
+        "Laveries automatiques",
+        "Espaces détente"
+      ]
+    },
+    "sports": {
+      "indoor": [
+        "Salle de musculation (1500m²)",
+        "Piscine semi-olympique",
+        "Salles de danse"
+      ],
+      "outdoor": [
+        "Terrains de football (gazon synthétique)",
+        "Courts de tennis/padel",
+        "Piste d'athlétisme"
+      ]
+    },
+    "services": [
+      {
+        "name": "Centre médical Medhelp",
+        "availability": "24/7"
+      },
+      {
+        "name": "Bibliothèque centrale",
+        "resources": [
+          "80 000 ouvrages",
+          "200 postes informatiques",
+          "Salles de travail collaboratif"
+        ]
+      },
+      {
+        "name": "Transport",
+        "shuttle_routes": ["Rabat-Ville", "Salé", "Témara"]
+      }
+    ],
+    "clubs": ["Robotique", "Débats", "Arts plastiques", "Entrepreneuriat"]
+  },
+  "contact": {
+    "admission_office": {
+      "email": "concours@uir.ac.ma",
+      "phone": "+212 530 10 30 00"
+    },
+    "social_media": {
+      "facebook": "UIR Rabat",
+      "instagram": "@uir.rabat",
+      "linkedin": "Université Internationale de Rabat"
+    },
+    "visiting_hours": "Lundi-Vendredi 8h30-16h30"
+  },
+  "metadata": {
+    "source_document": "Catalogue version web (1).pdf",
+    "extraction_date": "2023-11-15",
+    "data_coverage": {
+      "pages": "1-20",
+      "programs": 22,
+      "facilities": 15
+    },
+    "version": "1.0"
+  }
+}
