@@ -17,7 +17,7 @@ import { getVectoreStore } from "./vector";
 import { PostgresChatMessageHistory } from "@langchain/community/stores/message/postgres";
 require("dotenv").config();
 
-export const mainFunction = async (userInput: string, phoneNumber: string) => {
+export const mainFunction = async (userInput: string , phoneNumber : string) => {
   const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the following conversation and a follow up question, 
 rephrase the follow up question to be a standalone question.`;
 
@@ -45,16 +45,15 @@ rephrase the follow up question to be a standalone question.`;
     new StringOutputParser(),
   ]);
 
-  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant de l'Université Internationale de Rabat. Répondez poliment et professionnellement.
+  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant de l'Université Internationale de Rabat. Répondez poliment et professionnellement. 
+  Si l'utilisateur vous salue ou bien 
+  si la question contient des mots comme 'bonjour', 'hello', etc., 
+  répondez avec : \"Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?\"
+En utilisant uniquement les ressources fournies. Soyez prolixe !
 
-  Si l'utilisateur vous salue ou si la question contient des mots comme 'bonjour', 'hello', etc., répondez avec :
-  "Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ?"
-  
-  Sinon, répondez uniquement au contenu de la question sans ajouter d'informations supplémentaires. Soyez clair, concis et restez fidèle aux ressources fournies.
-  
-  <context>
-  {context}
-  </context>`;
+<context>
+{context}
+</context>`;
 
   const answerGenerationChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", ANSWER_CHAIN_SYSTEM_TEMPLATE],
