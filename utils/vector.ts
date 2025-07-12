@@ -7,7 +7,6 @@ import { embeddings } from "./openai";
 require("dotenv").config();
 
 export const getVectoreStore = async () => {
-  console.log(process.env.DB_HOST)
   const config = {
     postgresConnectionOptions: {
       type: "postgres",
