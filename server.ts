@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.post("/uir-chat-bot", async (req, res) => {
   const message = req.body;
   const answer = await mainFunction(message.Body, message.From);
-  await sendMessage(message.From, answer);
+  // await sendMessage(message.From, answer);
   res.send({ message: message.Body, answer });
 });
 
