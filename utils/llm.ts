@@ -18,9 +18,8 @@ import { PostgresChatMessageHistory } from "@langchain/community/stores/message/
 require("dotenv").config();
 
 export const mainFunction = async (userInput: string, phoneNumber: string) => {
-  //   const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the conversation and a follow-up question, rewrite it as a standalone question.
-  // If the conversation has no useful context or is empty, return the original question as-is.
-  // If the question contains "bonjour", "hello", "salam", or similar greetings, do NOT rephrase and return the original question.`;
+  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the following conversation and a follow up question, 
+rephrase the follow up question to be a standalone question.`;
 
   const vectorStore = await getVectoreStore();
   const retriever = vectorStore.asRetriever();
@@ -30,20 +29,13 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
       .map((document) => `<doc>\n${document.pageContent}\n</doc>`)
       .join("\n");
   };
-  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `
-  Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. 
-  Votre tâche est de reformuler toute question utilisateur comme une question autonome complète, 
-  même si elle dépend du contexte précédent. 
-  La question reformulée doit toujours être en français, même si l'utilisateur utilise une autre langue.
-  Si vous ne pouvez pas reformuler correctement la question de manière autonome, retournez simplement le dernier message de l'utilisateur tel quel, sans modification.
-  `;
 
   const rephraseQuestionChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", REPHRASE_QUESTION_SYSTEM_TEMPLATE],
     new MessagesPlaceholder("history"),
     [
       "human",
-      "Reformule la question suivante comme une question autonome :\n{question}",
+      "Rephrase the following question as a standalone question:\n{question}",
     ],
   ]);
 
@@ -53,16 +45,12 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
     new StringOutputParser(),
   ]);
 
-  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment, professionnellement, et dans la même langue que la question de l'utilisateur.
+  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant de l'Université Internationale de Rabat. Répondez poliment et professionnellement.
 
-  Répondez en français.  
-  Si vous n'arrivez pas à identifier la langue, répondez par défaut en français.
+  Si l'utilisateur vous salue ou si la question contient des mots comme 'bonjour', 'hello', etc., répondez avec :
+  "Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ?"
   
-  Si la question contient des mots comme "bonjour", "hello", "salam", etc., répondez par : "Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?"
-  
-  Dans tous les cas, assurez-vous d’inclure dans votre réponse une mention de "l’Université Internationale de Rabat".
-  
-  Sinon, répondez uniquement au contenu de la question sans ajouter d'informations non présentes dans les documents. Soyez clair, concis et basé sur le contexte fourni.
+  Sinon, répondez uniquement au contenu de la question sans ajouter d'informations supplémentaires. Soyez clair, concis et restez fidèle aux ressources fournies.
   
   <context>
   {context}
@@ -77,37 +65,22 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
     ],
   ]);
 
-  //   const documentRetrievalChain = RunnableSequence.from([
-  //     (input) => input.standalone_question,
-  //     retriever,
-  //     convertDocsToString,
-  //   ]);
+  const documentRetrievalChain = RunnableSequence.from([
+    (input) => input.standalone_question,
+    retriever,
+    convertDocsToString,
+  ]);
+
   const conversationalRetrievalChain = RunnableSequence.from([
     RunnablePassthrough.assign({
-      standalone_question: async (input) => {
-        const result = await rephraseQuestionChain.invoke(input);
-
-        return result;
-      },
+      standalone_question: rephraseQuestionChain,
     }),
     RunnablePassthrough.assign({
-      context: async (input) => {
-        const question = input.standalone_question;
-        // console.log("✅ Rephrased Question:", question);
-        const docs = await retriever.invoke(question);
-        const contextString = convertDocsToString(docs);
-        // console.log(contextString)
-        return contextString;
-      },
+      context: documentRetrievalChain,
     }),
-    async (input) => {
-      const prompt = await answerGenerationChainPrompt.invoke(input);
-      console.log("✅ PROMPT :", prompt)
-      const llm = new ChatOpenAI({ modelName: "gpt-3.5-turbo" });
-      const llmResult = await llm.invoke(prompt);
-      const parsed = await new StringOutputParser().invoke(llmResult);
-      return parsed;
-    },
+    answerGenerationChainPrompt,
+    new ChatOpenAI({ modelName: "gpt-3.5-turbo" }),
+    new StringOutputParser(),
   ]);
 
   const poolConfig = {
