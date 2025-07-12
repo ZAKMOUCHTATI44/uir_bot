@@ -37,21 +37,24 @@ R : Le parcours se découpe en 2 ans de préparatoire intégré (maths, physique
 .
 
 Q : Est-ce que vous avez un parcours 100 % en ligne ou en alternance pour les post-bac ?
-R : Non, les programmes post-bac sont 100 % présentiels sur campus. 
+R : "Non, les programmes post-bac proposés par l’UIR sont entièrement en présentiel sur campus. À ce jour, l’université ne propose pas de parcours 100 % en ligne ni de formation en alternance pour les étudiants post-bac, afin de garantir une immersion complète et un accompagnement optimal tout au long de leur cursus." 
 
 Sur les bourses post-bac
+
 Q : Vous proposez quelles bourses pour les nouveaux bacheliers ?
-R : L’UIR offre une bourse sociale (réduction partielle ou exonération totale des frais de scolarité et d’hébergement) et un prêt étudiant (jusqu’à 50 000 Dhs/an avec différé possible) 
-.
+R : "L’UIR propose pour les nouveaux bacheliers une bourse sociale qui consiste en une réduction partielle ou une exonération totale des frais de scolarité ainsi que des frais d’hébergement. Par ailleurs, un prêt étudiant est également disponible, pouvant aller jusqu’à 50 000 Dhs par an, avec possibilité de différé de remboursement, afin de faciliter l’accès aux études supérieures pour les étudiants ayant des contraintes financières."
 
 Q : Comment je candidate à la bourse post-bac ?
-R : Après avoir créé votre compte sur www.uir.ac.ma, allez dans Candidature bacheliers, renseignez vos infos, choisissez votre programme puis cochez l’option « Financement » pour ajouter une demande de bourse. 
+R : "Après avoir créé votre compte sur www.uir.ac.ma, accédez à la section « Candidature bacheliers ». Renseignez vos informations personnelles et académiques, sélectionnez votre programme d’études, puis cochez l’option « Financement » pour inclure une demande de bourse. Cette démarche vous permettra de soumettre votre dossier de candidature à la bourse post-bac dans les délais impartis."
+
 
 Q : Quels justificatifs je dois fournir pour une bourse ?
-R : Vous constituez un dossier en ligne démontrant votre incapacité de financement par vos tuteurs (relevés de notes, copie du baccalauréat, pièce d’identité, justificatifs de revenus, lettre de motivation, etc.) 
+R : "Pour constituer un dossier de demande de bourse, vous devez fournir en ligne plusieurs justificatifs attestant de votre incapacité à financer vos études par vos tuteurs. Ces documents incluent notamment vos relevés de notes, une copie de votre baccalauréat, une pièce d’identité valide, des justificatifs de revenus de vos parents ou tuteurs, ainsi qu’une lettre de motivation expliquant votre situation. Assurez-vous que tous les documents soient complets et à jour pour permettre une évaluation précise de votre dossier."
+}
 
 Q : La date limite pour la demande de bourse post-bac, c’est quand ?
-R : La demande de bourse se fait en même temps que votre inscription aux concours post-bac : pour la session de juillet 2025, les épreuves écrites ont lieu le 21 juillet et l’oral le 24 juillet, votre dossier bourse doit être finalisé avant votre concours choisi 
+R : "La demande de bourse post-bac doit être déposée en même temps que votre inscription aux concours post-bac. Pour la session de juillet 2025, les épreuves écrites sont prévues le 21 juillet et les oraux le 24 juillet. Votre dossier de demande de bourse doit donc être finalisé avant la date de l’épreuve du concours que vous aurez choisie, afin d’être pris en compte dans les délais."
+}
 
 Sur les frais de scolarité post-bac
 Q : C’est combien les frais pour une licence Bachelor à l’UIR ?
@@ -66,18 +69,18 @@ Architecture (ESAR) : 85 000 Dhs/an + 10 000 Dhs inscription
 Santé (Biotechnologie, Diététique, Imagerie, LIP, LIAR) : 26 000–62 000 Dhs/an + 10 000 Dhs inscription 
 
 Q : Je peux régler mes frais en plusieurs échéances ?
-R : Oui, le paiement peut se faire automatiquement en deux tranches sans frais supplémentaires 
-faq.uir.ac.ma
+R : Oui, le paiement des frais de scolarité à l’UIR peut se faire automatiquement en deux tranches, sans frais supplémentaires. Pour plus d’informations, vous pouvez consulter le site officiel à l’adresse faq.uir.ac.ma."
+
 
 Q : Quels frais annexes prévoir (assurance, labo, bibliothèque…) ?
-R : Les frais de scolarité incluent l’accès aux laboratoires, à la bibliothèque, aux installations sportives, etc. Aucun coût additionnel obligatoire n’est facturé en dehors des frais d’inscription et de scolarité 
+R :Les frais de scolarité à l’UIR incluent l’accès aux laboratoires, à la bibliothèque, aux installations sportives et autres infrastructures universitaires. Aucun coût additionnel obligatoire n’est facturé en dehors des frais d’inscription et des frais de scolarité annuels.
 
 
 Q : Y a-t-il une réduction si plusieurs frères/sœurs s’inscrivent ?
-R : Aucune réduction fratrie n’est mentionnée dans le catalogue officiel des formations post-bac de l’UIR 
+R :Non, il n’y a pas de réduction si plusieurs frères ou sœurs s’inscrivent à l’UIR.
 
 Q : Comment obtenir ma facture officielle après le paiement ?
-R : Connectez-vous à votre espace e-services (https://eservices.uir.ac.ma) avec vos identifiants UIR et téléchargez votre facture ou attestation de paiement dans « Paiements / Factures »
+R : Après avoir effectué votre paiement, vous pouvez obtenir votre facture officielle en vous connectant à votre espace e-services sur https://eservices.uir.ac.ma à l'aide de vos identifiants UIR. Une fois connecté, rendez-vous dans la section « Paiements / Factures » où vous pourrez télécharger votre facture ou attestation de paiement en format PDF, facilement imprimable ou archivable.
 
 : Quels programmes post-bac propose l’UIR (licences et bachelors) ?
 R :
@@ -112,86 +115,27 @@ Médecine (6 ans)
 Q : Comment intégrer le cycle Ingénieur en Génie Civil : quels baccalauréats sont acceptés et quelles épreuves ?
 R :
 
-Bac acceptés : Mathématiques A, Mathématiques B, Physiques, SVT, Sciences & Technologies Mécanique, Sciences & Technologies Électrique
-
-Épreuves :
-
-Écrit : Mathématiques & Physique
-
-Oral : Entretien individuel devant jury
-
-Frais : 66 000 Dhs/an + 10 000 Dhs inscription 
+Pour intégrer le cycle Ingénieur en Génie Civil à l'UIR, les baccalauréats acceptés sont : Mathématiques A, Mathématiques B, Physique, SVT, Sciences & Technologies Mécanique, et Sciences & Technologies Électrique. Les épreuves d'admission comprennent un examen écrit portant sur les mathématiques et la physique, ainsi qu'un entretien individuel devant un jury. Les frais de scolarité s'élèvent à 66 000 Dhs par an, avec des frais d'inscription de 10 000 Dhs.
 
 Q : Quelles sont les modalités d’accès et les frais pour l’International Program in Management (IPM) ?
-R :
+R :Le programme International Program in Management (IPM) est accessible à tous types de baccalauréat. Les épreuves de sélection comprennent un examen écrit portant sur le raisonnement logique, le raisonnement numérique et une ouverture culturelle, suivi d’un entretien oral de motivation. Les frais de scolarité s’élèvent à 65 000 Dhs par an, avec des frais d’inscription de 10 000 Dhs.
 
-Candidats éligibles : Tous types de baccalauréat
-
-Épreuves :
-
-Écrit : raisonnement logique & numérique, ouverture culturelle
-
-Oral : entretien de motivation
-
-Frais : 65 000 Dhs/an + 10 000 Dhs inscription 
-
-Q : Quelles sont les conditions d’admission et les frais pour l’International Triple Bachelor ?
-R :
-
-Conditions :
-
-Baccalauréat avec mention “très bien” (high honours)
-
-Concours en deux étapes (written : logique & numérique, ouverture culturelle, mathématiques ; oral : entretien)
-
-Frais :
-
-RBS : 120 000 Dhs/an
-
-IÉSEG : 11 000 €
-
-HEC Montréal : selon nationalité (voir site HEC Montréal) 
 
 Q : Quelles sont les étapes pour candidater sur la plateforme « Candidature bacheliers » ?
-R :
-
-Accédez à www.uir.ac.ma
-
-Cliquez sur Candidature
-
-Sélectionnez Candidature bacheliers
-
-Renseignez vos informations et choisissez votre/vos programme(s)
-
-Rechargez votre compte candidat et réglez les frais de concours (voir question ci- dessous)
-
-Téléchargez votre convocation sur votre espace candidat ou dans votre boîte e-mail 
+R : Pour candidater sur la plateforme « Candidature bacheliers » de l’UIR, suivez ces étapes : accédez au site www.uir.ac.ma, cliquez sur l’onglet Candidature, puis sélectionnez Candidature bacheliers. Renseignez toutes vos informations personnelles et académiques, choisissez votre ou vos programmes de formation. Ensuite, rechargez votre compte candidat pour régler les frais de concours comme indiqué dans la FAQ. Enfin, vous pourrez télécharger votre convocation sur votre espace candidat ou la recevoir directement par e-mail.
 
 Q : Quel est le montant des frais de concours et comment régler ?
-R :
-
-750 Dhs pour 1 ou 2 sessions
-
-1 500 Dhs pour un nombre illimité de sessions
-
-Paiement : en espèces à l’UIR ou par virement/versement bancaire (RIB disponible sur votre compte) 
+R : Les frais de concours sont de 750 Dhs si vous choisissez une ou deux sessions, et de 1 500 Dhs si vous souhaitez participer à un nombre illimité de sessions. Le règlement peut se faire directement en espèces au sein de l’UIR ou à distance par virement ou versement bancaire sur le compte indiqué lors de votre inscription. Une fois le paiement effectué, veillez à téléverser la preuve de paiement sur votre espace candidat pour valider définitivement votre candidature.
 
 Q : Comment et où télécharger ma convocation une fois inscrit ?
 R :
-Téléchargez votre convocation directement depuis votre espace candidat sur le site ou consultez votre boîte e-mail (mail envoyé après paiement). 
+Une fois votre inscription finalisée et le paiement des frais de concours effectué, vous pouvez télécharger votre convocation depuis votre espace candidat sur le site www.uir.ac.ma. Un e-mail contenant votre convocation vous est également envoyé automatiquement à l’adresse fournie lors de votre inscription. Pensez à vérifier vos spams ou courriers indésirables si vous ne le voyez pas dans votre boîte principale.
 
-Q : Quelles sont les conditions pour obtenir la bourse sociale ?
-R :
 
-Obtention du baccalauréat l’année de l’inscription à l’UIR
-
-Constitution d’un dossier prouvant l’incapacité de financement par les tuteurs légaux
-
-(Note générale au bac ≥ 12/20) 
 
 Q : Quel montant maximum peut atteindre le prêt étudiant et auprès de quelle banque ?
 R :
-Prêt jusqu’à 50 000 Dhs/an accordé par la Banque Populaire, avec différé possible jusqu’à 6 ans.
+Le prêt étudiant peut atteindre un montant maximal de 50 000 Dhs par an. Il est accordé par la Banque Populaire dans le cadre d’un dispositif spécifique pour les étudiants de l’UIR. Ce prêt est bonifié, avec la possibilité d’un différé de remboursement pouvant aller jusqu’à 6 ans, ce qui permet aux étudiants de commencer à rembourser après la fin de leurs études.
 
 Q : Quels programmes post-bac propose la Rabat Business School ?
 R : International Program in Management et International Triple Bachelor 
@@ -389,106 +333,27 @@ Q : Modules 1ʳᵉ année CI ESIN ?
 R : Algèbre, Analyse numérique, Électronique, BD, Réseaux, Langues, Art & Culture, Stats, Signaux, OS, Algo, Web, Dev perso & responsabilité pro 
 
 Q : Quelles solutions de financement propose l’UIR ?
-R : Bourse sociale & prêt étudiant 
+R : "L’UIR propose deux principales solutions de financement pour accompagner les étudiants : une bourse sociale, qui peut couvrir partiellement ou totalement les frais de scolarité et d’hébergement, attribuée sur la base de critères sociaux ; et un **prêt étudiant** bonifié en partenariat avec la Banque Populaire, pouvant aller jusqu’à 50 000 Dhs par an, avec possibilité de différé de remboursement pendant toute la durée des études."
+}
 
 Q : Critères bourse sociale ?
-R : Bac obtenu l’année de l’inscription + dossier prouvant incapacité financement par tuteurs 
+R : Pour être éligible à la bourse sociale de l’UIR, vous devez avoir obtenu votre baccalauréat l’année de votre inscription à l’université. De plus, vous devez soumettre un dossier complet justifiant l’incapacité de vos tuteurs à financer vos études, comprenant notamment des justificatifs de revenus, une lettre de motivation, les relevés de notes, la copie du baccalauréat et toute autre pièce prouvant la situation sociale.
 
 Q : Part de boursiers ?
-R : Près de 30 % 
+R : Près de 30 % des étudiants inscrits à l’UIR bénéficient d’une aide financière, qu’il s’agisse d’une bourse sociale couvrant tout ou partie des frais de scolarité et d’hébergement, ou d’un prêt étudiant bonifié. Cela reflète l’engagement de l’université à favoriser l’accès à l’enseignement supérieur pour tous, indépendamment de la situation financière.
 
 Q : Montant max prêt étudiant ?
-R : Jusqu’à 50 000 Dhs/an 
+R : L’UIR propose, en partenariat avec la Banque Populaire, un prêt étudiant bonifié pouvant atteindre jusqu’à 50 000 dirhams par an, en fonction du cycle d’études. Ce prêt est assorti de conditions avantageuses, notamment une prise en charge des intérêts pendant la durée des études par l’université, ainsi qu’un différé de remboursement pouvant aller jusqu’à 6 ans. Cette solution vise à alléger la charge financière des familles et à favoriser la poursuite des études supérieures.
 
 Q : Différé prêt étudiant ?
-R : Jusqu’à 6 ans 
+R : Le prêt étudiant proposé par l’UIR, en collaboration avec la Banque Populaire, peut bénéficier d’un différé de remboursement allant jusqu’à 6 ans. Cela signifie que l’étudiant peut commencer à rembourser le capital du prêt après l’obtention de son diplôme, ce qui lui laisse le temps d’intégrer le marché du travail avant d’assumer cette charge financière. Pendant la période d’études, les intérêts sont pris en charge par l’université.
 
-Q : Comment candidater post-bac ?
-R : www.uir.ac.ma > Candidature > Candidature bacheliers: remplir, recharger compte, régler frais, télécharger convocation 
-
-Q : Frais concours post-bac ?
-R : 750 Dhs (1–2 sessions), 1 500 Dhs (illimité) 
-
-Q : Modalités paiement concours ?
-R : Espèces à l’UIR ou virement (RIB dispo) 
 
 Q : Où télécharger la convocation ?
-R : Espace candidat ou e-mail suite paiement 
+R : Une fois votre inscription finalisée et le paiement des frais de concours effectué, vous pouvez télécharger votre convocation directement depuis votre espace candidat sur le site officiel de l’UIR. Un exemplaire de la convocation vous est également envoyé par e-mail à l’adresse que vous avez renseignée lors de votre inscription. Assurez-vous de vérifier votre boîte de réception ainsi que les courriers indésirables.
 
 Q : Combien de points de restauration ?
-R : 6 dont 1 restaurant universitaire 
+R : Le campus de l’UIR dispose de 6 points de restauration, adaptés aux différents besoins et budgets des étudiants. Parmi eux, on trouve un restaurant universitaire proposant des repas complets à prix réduits, ainsi que plusieurs autres options variées, allant du snack au café, pour répondre à toutes les envies culinaires.
 
-Q : Combien de laveries ?
-R : 2 (UIR Laverie & Lavomatic) 
 
-Q : Centres de reprographie ?
-R : 1 centre 
 
-Q : Centre de santé ?
-R : MedHelp, 24 h/24, 7 j/7 
-
-Q : Cellule d’écoute ?
-R : Psychologues sur rendez-vous 
-
-Q : Navettes campus ?
-R : > 10 lignes Rabat-Salé-Témara 
-
-Q : Taille de la bibliothèque ?
-R : > 80 000 ouvrages 
-
-Q : Nombre de résidences ?
-R : 8 
-
-Q : Tarif chambre single ?
-R : Dès 2 800 Dhs/mois 
-
-Q : Tarif chambre double ?
-R : Dès 2 000 Dhs/mois 
-
-Q : Semestre 1 licence Économie ?
-R : Intro droit, Macroéco I, Analyse maths II (algèbre), Comptabilité générale, Fisc, Langues (anglais/espagnol), Culture digitale & HN 
-
-Q : Semestre 2 licence Économie ?
-R : Micro éco II, Macro éco II, Éco dével., Intro sciences pol., Droit des affaires, Langues, Art & culture arabe 
-
-Q : Semestre 3 licence Économie ?
-R : Droit des affaires, Sciences pol., Éco dével., Micro II, Macro II, Langues, Art & culture 
-
-Q : Semestre 4 licence Économie?
-R : Éco mon. & fin. I, Échant. & est., Éco pol., Comptabilité nationale, Problèmes éco., Langues, Leadership & engagement civique 
-
-Q : Semestre 5 licence Économie ?
-R : Finances publiques & droit fiscal, Histoire pensée éco, Éco solidaire/sociale, Méthodo res., Analyse données, Langues, CMS 
-
-Q : Semestre 6 licence Économie ?
-R : Intro économétrie, Éco internationale, Fiscalité, Mémoire, Langues, Leadership & comm. 
-
-Q : Modalités d’accès licence Économie ?
-R : Tous bacs, dossiers (bulletins, lettre, projet), entretien oral 
-
-Q : Frais licence Économie ?
-R : 62 000 Dhs/an + 10 000 Dhs inscription 
-
-Q : Parcours Communication & Médias ?
-R : Licence 3 ans + Master 2 ans co-diplomation IHECS, cours théoriques + ateliers (photo, vidéo, son, graphisme, web) 
-
-Q : Partenaire Communication & Médias ?
-R : IHECS (Belgique) 
-
-Q : Modalités d’accès Communication & Médias ?
-R : Tous bacs & équivalents, oral individuel, 62 000 Dhs/an + 10 000 Dhs inscription 
-
-Q : Objectif Communication & Médias ?
-R : Former des pros de la com’ avec bagage théorique & pratique en réponse au marché 
-
-Q : Spécialisations Masters Communication & Médias ?
-R : Publicité, Relations Publiques, Journalisme (co-diplomation IHECS) 
-
-Q : Axes majeurs Communication & Médias ?
-R : Culture générale & fondamentaux sciences sociales; compétences disciplinaires; manipulation pratique des médias 
-
-Q : Programmes Techniques d’Imagerie Médicale ?
-R : Licence Techniques d’Imagerie Médicale (3 ans) couvrant santé publique, anatomie, physio, biologie, droit pro, Élec/Électromagnétisme, sémiologie, hygiène, sciences phys., stages, languages 
-
-Q : Modalités d’accès Techniques d’Imagerie Médicale ?
-R : Tous bacs, B1 français (psychologie), dossier (bulletins, lettre 2 p., projet 3 p.), oral devant jury, 62 000 Dhs/an + 10 000 Dhs inscription
