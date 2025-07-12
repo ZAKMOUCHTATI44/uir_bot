@@ -18,8 +18,9 @@ import { PostgresChatMessageHistory } from "@langchain/community/stores/message/
 require("dotenv").config();
 
 export const mainFunction = async (userInput: string, phoneNumber: string) => {
-  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the following conversation and a follow up question, 
-rephrase the follow up question to be a standalone question.`;
+  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the conversation and a follow-up question, rewrite it as a standalone question.
+If the conversation has no useful context or is empty, return the original question as-is.
+If the question contains "bonjour", "hello", "salam", or similar greetings, do NOT rephrase and return the original question.`;
 
   const vectorStore = await getVectoreStore();
   const retriever = vectorStore.asRetriever();
@@ -45,16 +46,20 @@ rephrase the follow up question to be a standalone question.`;
     new StringOutputParser(),
   ]);
 
-  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant de l'Université Internationale de Rabat. Répondez poliment et professionnellement.
+  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat – Technopolis Rabat-Shore Rocade Rabat-Salé. Répondez poliment, professionnellement et dans la même langue que la question de l'utilisateur.
 
-  Si l'utilisateur vous salue ou si la question contient des mots comme 'bonjour', 'hello', etc., répondez avec :
-  "Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ?"
-  
-  Sinon, répondez uniquement au contenu de la question sans ajouter d'informations supplémentaires. Soyez clair, concis et restez fidèle aux ressources fournies.
-  
-  <context>
-  {context}
-  </context>`;
+Si la question est en français, répondez en français.  
+Si elle est en anglais, répondez en anglais.  
+Si vous n'arrivez pas à identifier la langue, répondez par défaut en français.
+
+Si la question contient des mots comme "bonjour", "hello", "salam", etc., commencez par :
+"Bonjour ! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ?"
+
+Sinon, répondez uniquement au contenu de la question sans ajouter d'informations non présentes dans les documents. Soyez clair, concis et basé sur le contexte fourni.
+
+<context>
+{context}
+</context>`;
 
   const answerGenerationChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", ANSWER_CHAIN_SYSTEM_TEMPLATE],
