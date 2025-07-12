@@ -93,15 +93,16 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
     RunnablePassthrough.assign({
       context: async (input) => {
         const question = input.standalone_question;
-        console.log("✅ Rephrased Question:", question);
+        // console.log("✅ Rephrased Question:", question);
         const docs = await retriever.invoke(question);
         const contextString = convertDocsToString(docs);
-        console.log(contextString)
+        // console.log(contextString)
         return contextString;
       },
     }),
     async (input) => {
       const prompt = await answerGenerationChainPrompt.invoke(input);
+      console.log("✅ PROMPT :", prompt)
       const llm = new ChatOpenAI({ modelName: "gpt-3.5-turbo" });
       const llmResult = await llm.invoke(prompt);
       const parsed = await new StringOutputParser().invoke(llmResult);
