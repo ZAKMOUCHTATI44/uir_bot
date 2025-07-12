@@ -7,8 +7,10 @@ import { CSVLoader } from "@langchain/community/document_loaders/fs/csv";
 import { getVectoreStore } from "./vector";
 const main = async () => {
   const links = [
-    "https://www.uir.ac.ma/fr/page/mot-du-president",
-    "https://www.uir.ac.ma/fr/page/candidats-bacheliers",
+    "https://snazzy-brioche-80dbb5.netlify.app/",
+    "https://snazzy-brioche-80dbb5.netlify.app/dossier-dinscription.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/frais-hebergement.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/mot-du-president.html",
   ];
 
   const splitter = new RecursiveCharacterTextSplitter({
@@ -18,7 +20,6 @@ const main = async () => {
   const vectorStore = await getVectoreStore();
 
   for (const link of links) {
-
     const cheerioLoader = new CheerioWebBaseLoader(link, { selector: "body" });
     const docs = await cheerioLoader.load();
 
