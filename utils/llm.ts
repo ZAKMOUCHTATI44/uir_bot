@@ -97,6 +97,7 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
         console.log("✅ Rephrased Question:", question);
         const docs = await retriever.invoke(question);
         const contextString = convertDocsToString(docs);
+        console.log(contextString)
         return contextString;
       },
     }),
