@@ -9,7 +9,6 @@ import { mainFunction } from "./utils/llm";
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.json());
-let vectorStore: any;
 
 app.post("/uir-chat-bot", async (req, res) => {
   const message = req.body;
@@ -20,6 +19,5 @@ app.post("/uir-chat-bot", async (req, res) => {
 
 const PORT = 7001;
 app.listen(PORT, async () => {
-  vectorStore = await getVectoreStore();
   console.log(`App Started in port ${PORT}`);
 });
