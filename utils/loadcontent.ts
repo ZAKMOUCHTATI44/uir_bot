@@ -13,7 +13,9 @@ const main = async () => {
     "https://snazzy-brioche-80dbb5.netlify.app/frais-hebergement.html",
     "https://snazzy-brioche-80dbb5.netlify.app/mot-du-president",
     "https://snazzy-brioche-80dbb5.netlify.app/calendrier-des-concours",
-    "https://snazzy-brioche-80dbb5.netlify.app/general.html"
+    "https://snazzy-brioche-80dbb5.netlify.app/general.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/list-offres.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/contact.html",
   ];
 
   const splitter = new RecursiveCharacterTextSplitter({
@@ -27,24 +29,10 @@ const main = async () => {
       selector: "section",
     });
     const docs = await cheerioLoader.load();
-
     const allSplits = await splitter.splitDocuments(docs);
     // Index chunks
     await vectorStore.addDocuments(allSplits);
   }
-
-  // const loader = new JSONLoader("./data/faq.json", ["/answer"]);
-  // const loaderTxt = new TextLoader("./data/general.txt");
-  // const loaderCsv = new CSVLoader("./data/data.csv");
-
-  // const docsfaq = await loader.load();
-  // const docsCsv = await loaderCsv.load();
-  // const loaderTxtLoad = await loaderTxt.load();
-
-  // await vectorStore.addDocuments(await splitter.splitDocuments(docsfaq));
-  // await vectorStore.addDocuments(await splitter.splitDocuments(docsCsv));
-  // await vectorStore.addDocuments(await splitter.splitDocuments(loaderTxtLoad));
-
   console.log("DONE");
 };
 

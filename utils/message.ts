@@ -11,7 +11,7 @@ export async function sendMessage(sendTo: string, message: string) {
     .then(() => {
       console.log("SENDING ...");
     })
-    .catch(() => {
-      console.log("err");
+    .catch((err) => {
+      console.log(err);
     });
 }
