@@ -17,9 +17,16 @@ import { getVectoreStore } from "./vector";
 import { PostgresChatMessageHistory } from "@langchain/community/stores/message/postgres";
 require("dotenv").config();
 
-export const mainFunction = async (userInput: string , phoneNumber : string) => {
-  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the following conversation and a follow up question, 
-rephrase the follow up question to be a standalone question.`;
+export const mainFunction = async (userInput: string, phoneNumber: string) => {
+  //   const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the following conversation and a follow up question,
+  // rephrase the follow up question to be a standalone question.`;
+
+  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
+
+Si la question de l'utilisateur est une salutation (par exemple : "bonjour", "salut", "hello", "salam", etc.), répondez directement par :
+"Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?"
+
+Sinon, reformulez la question comme une question autonome sans mentionner la conversation précédente.`;
 
   const vectorStore = await getVectoreStore();
   const retriever = vectorStore.asRetriever();
