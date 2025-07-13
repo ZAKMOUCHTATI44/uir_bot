@@ -23,7 +23,7 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
 
   const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
 
-Si la question de l'utilisateur est une salutation (par exemple : "bonjour", "salut", "hello", "salam", etc.), répondez directement par :
+Si la derniere question de l'utilisateur est une salutation (par exemple : "bonjour", "salut", "hello", "salam", etc.), répondez directement par :
 "Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?"
 
 Sinon, reformulez la question comme une question autonome sans mentionner la conversation précédente.`;
@@ -106,6 +106,7 @@ En utilisant uniquement les ressources fournies. Soyez prolixe !
         sessionId,
         pool,
       });
+      console.log(chatHistory)
       return chatHistory;
     },
     historyMessagesKey: "history",
