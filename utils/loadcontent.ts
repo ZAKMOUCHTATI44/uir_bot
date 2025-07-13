@@ -8,9 +8,12 @@ import { getVectoreStore } from "./vector";
 const main = async () => {
   const links = [
     "https://snazzy-brioche-80dbb5.netlify.app/",
-    "https://snazzy-brioche-80dbb5.netlify.app/dossier-dinscription.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/dossier-dinscription",
+    "https://snazzy-brioche-80dbb5.netlify.app/frais-de-scolarite",
     "https://snazzy-brioche-80dbb5.netlify.app/frais-hebergement.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/mot-du-president.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/mot-du-president",
+    "https://snazzy-brioche-80dbb5.netlify.app/calendrier-des-concours",
+    "https://snazzy-brioche-80dbb5.netlify.app/general.html"
   ];
 
   const splitter = new RecursiveCharacterTextSplitter({
@@ -20,7 +23,9 @@ const main = async () => {
   const vectorStore = await getVectoreStore();
 
   for (const link of links) {
-    const cheerioLoader = new CheerioWebBaseLoader(link, { selector: "body" });
+    const cheerioLoader = new CheerioWebBaseLoader(link, {
+      selector: "section",
+    });
     const docs = await cheerioLoader.load();
 
     const allSplits = await splitter.splitDocuments(docs);
@@ -28,17 +33,17 @@ const main = async () => {
     await vectorStore.addDocuments(allSplits);
   }
 
-  const loader = new JSONLoader("./data/faq.json", ["/answer"]);
-  const loaderTxt = new TextLoader("./data/general.txt");
-  const loaderCsv = new CSVLoader("./data/data.csv");
+  // const loader = new JSONLoader("./data/faq.json", ["/answer"]);
+  // const loaderTxt = new TextLoader("./data/general.txt");
+  // const loaderCsv = new CSVLoader("./data/data.csv");
 
-  const docsfaq = await loader.load();
-  const docsCsv = await loaderCsv.load();
-  const loaderTxtLoad = await loaderTxt.load();
+  // const docsfaq = await loader.load();
+  // const docsCsv = await loaderCsv.load();
+  // const loaderTxtLoad = await loaderTxt.load();
 
-  await vectorStore.addDocuments(await splitter.splitDocuments(docsfaq));
-  await vectorStore.addDocuments(await splitter.splitDocuments(docsCsv));
-  await vectorStore.addDocuments(await splitter.splitDocuments(loaderTxtLoad));
+  // await vectorStore.addDocuments(await splitter.splitDocuments(docsfaq));
+  // await vectorStore.addDocuments(await splitter.splitDocuments(docsCsv));
+  // await vectorStore.addDocuments(await splitter.splitDocuments(loaderTxtLoad));
 
   console.log("DONE");
 };
