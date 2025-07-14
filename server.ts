@@ -14,6 +14,7 @@ app.post("/uir-chat-bot", async (req, res) => {
   if (message.MediaContentType0 === "audio/ogg") {
     const question = await handleAudio(message.MediaUrl0);
     const answer = await mainFunction(question, message.From);
+    console.log("QUESTION " , question)
     await sendMessage(message.From, answer);
     res.send({ message: message.Body, answer });
   } else {
