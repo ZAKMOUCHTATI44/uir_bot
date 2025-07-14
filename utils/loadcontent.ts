@@ -17,7 +17,8 @@ const main = async () => {
     "https://snazzy-brioche-80dbb5.netlify.app/list-offres.html",
     "https://snazzy-brioche-80dbb5.netlify.app/contact.html",
     "https://snazzy-brioche-80dbb5.netlify.app/sport-loisir.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/services-annexes.html"
+    "https://snazzy-brioche-80dbb5.netlify.app/services-annexes.html",
+    "https://snazzy-brioche-80dbb5.netlify.app/admission.html"
   ];
 
   const splitter = new RecursiveCharacterTextSplitter({
