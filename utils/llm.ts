@@ -1,4 +1,3 @@
-import { AIMessage, HumanMessage } from "@langchain/core/messages";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import {
   RunnablePassthrough,
@@ -6,7 +5,6 @@ import {
   RunnableWithMessageHistory,
 } from "@langchain/core/runnables";
 import { ChatOpenAI } from "@langchain/openai";
-import { ChatMessageHistory } from "langchain/stores/message/in_memory";
 import {
   ChatPromptTemplate,
   MessagesPlaceholder,
@@ -17,25 +15,66 @@ import { getVectoreStore } from "./vector";
 import { PostgresChatMessageHistory } from "@langchain/community/stores/message/postgres";
 require("dotenv").config();
 
+// Greeting detection setup
+const GREETINGS = [
+  "bonjour",
+  "bonsoir",
+  "salut",
+  "slt",
+  "hello",
+  "hi",
+  "hey",
+  "yoo",
+  "salam",
+  "slm",
+  "salem",
+  "salam alaykoum",
+  "salam aleykoum",
+  "salem alikoum",
+  "salam alikoum",
+  "azul", // Tamazight (Berber greeting)
+  "allo", // Like “hello” on the phone
+  "yo", // Informal
+  "good morning",
+  "good evening",
+  "morning",
+  "evening",
+];
+
+function containsGreeting(text: string): boolean {
+  const lowered = text.toLowerCase();
+  return GREETINGS.some((greet) => lowered.includes(greet));
+}
+
+function isOnlyGreeting(text: string): boolean {
+  const lowered = text.toLowerCase().trim();
+  return GREETINGS.some((greet) => {
+    const regex = new RegExp(`^${greet}[\\s!.,?]*$`, "i");
+    return regex.test(lowered);
+  });
+}
+
 export const mainFunction = async (userInput: string, phoneNumber: string) => {
-  //   const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Given the following conversation and a follow up question,
-  // rephrase the follow up question to be a standalone question.`;
+  // Case 1: Greeting only
+  if (isOnlyGreeting(userInput)) {
+    return `Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?`;
+  }
 
-  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
-
-Si la derniere question de l'utilisateur est une salutation (par exemple : "bonjour", "salut", "hello", "salam", etc.), répondez directement par :
-"Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?"
-
-Sinon, reformulez la question comme une question autonome sans mentionner la conversation précédente.`;
-
+  // Set up vector store & retriever
   const vectorStore = await getVectoreStore();
   const retriever = vectorStore.asRetriever();
 
+  // Converts retrieved docs into string
   const convertDocsToString = (documents: Document[]): string => {
     return documents
       .map((document) => `<doc>\n${document.pageContent}\n</doc>`)
       .join("\n");
   };
+
+  // Rephrase user input into standalone question
+  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
+
+Sinon, reformulez la question comme une question autonome sans mentionner la conversation précédente.`;
 
   const rephraseQuestionChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", REPHRASE_QUESTION_SYSTEM_TEMPLATE],
@@ -52,20 +91,8 @@ Sinon, reformulez la question comme une question autonome sans mentionner la con
     new StringOutputParser(),
   ]);
 
-  //   const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant de l'Université Internationale de Rabat. Répondez poliment et professionnellement.
-  //   Si l'utilisateur vous salue ou bien
-  //   si la question contient des mots comme 'bonjour', 'hello', etc.,
-  //   répondez avec : \"Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?\"
-  // En utilisant uniquement les ressources fournies. Soyez prolixe !
-
-  // <context>
-  // {context}
-  // </context>`;
-
+  // Answer generation with context
   const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment, professionnellement, et uniquement à partir des informations fournies dans le contexte ci-dessous.
-
-si la question contient des mots comme 'bonjour', 'hello', etc. répondez avec :
-"Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?"
 
 Si vous ne trouvez pas l'information dans le contexte, dites simplement :
 "Pouvez-vous reformuler cette question ?"
@@ -83,12 +110,14 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
     ],
   ]);
 
+  // Document retrieval chain
   const documentRetrievalChain = RunnableSequence.from([
     (input) => input.standalone_question,
     retriever,
     convertDocsToString,
   ]);
 
+  // Main question-answering chain
   const conversationalRetrievalChain = RunnableSequence.from([
     RunnablePassthrough.assign({
       standalone_question: rephraseQuestionChain,
@@ -101,6 +130,7 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
     new StringOutputParser(),
   ]);
 
+  // Set up Postgres history storage
   const poolConfig = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
@@ -118,13 +148,13 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
         sessionId,
         pool,
       });
-      console.log(chatHistory);
       return chatHistory;
     },
     historyMessagesKey: "history",
     inputMessagesKey: "question",
   });
 
+  // Run the full chain
   const finalResult = await finalRetrievalChain.invoke(
     {
       question: userInput,
