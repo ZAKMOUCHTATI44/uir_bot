@@ -22,6 +22,7 @@ const main = async () => {
     "https://brilliant-ganache-418aa1.netlify.app/bourse.html",
     "https://brilliant-ganache-418aa1.netlify.app/master.html",
     "https://brilliant-ganache-418aa1.netlify.app/inscription.html",
+    "https://brilliant-ganache-418aa1.netlify.app/listing-master.html"
   ];
 
   const splitter = new RecursiveCharacterTextSplitter({
