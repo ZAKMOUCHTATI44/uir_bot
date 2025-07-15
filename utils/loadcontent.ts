@@ -5,6 +5,7 @@ import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { CSVLoader } from "@langchain/community/document_loaders/fs/csv";
 import { getVectoreStore } from "./vector";
+import { link } from "fs";
 const main = async () => {
   const links = [
     "https://snazzy-brioche-80dbb5.netlify.app/",
@@ -22,8 +23,13 @@ const main = async () => {
     "https://brilliant-ganache-418aa1.netlify.app/bourse.html",
     "https://brilliant-ganache-418aa1.netlify.app/master.html",
     "https://brilliant-ganache-418aa1.netlify.app/inscription.html",
-    "https://brilliant-ganache-418aa1.netlify.app/listing-master.html"
+    "https://brilliant-ganache-418aa1.netlify.app/listing-master.html",
+    "https://brilliant-ganache-418aa1.netlify.app/cours-post-bac.html",
+    "https://brilliant-ganache-418aa1.netlify.app/cours-master.html",
+    "https://brilliant-ganache-418aa1.netlify.app/livret-institutionnel.html"
   ];
+
+  console.log(links.length)
 
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 1000,
