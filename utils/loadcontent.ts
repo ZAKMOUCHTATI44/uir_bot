@@ -19,7 +19,9 @@ const main = async () => {
     "https://snazzy-brioche-80dbb5.netlify.app/sport-loisir.html",
     "https://snazzy-brioche-80dbb5.netlify.app/services-annexes.html",
     "https://snazzy-brioche-80dbb5.netlify.app/admission.html",
-    "https://brilliant-ganache-418aa1.netlify.app/bourse.html"
+    "https://brilliant-ganache-418aa1.netlify.app/bourse.html",
+    "https://brilliant-ganache-418aa1.netlify.app/master.html",
+    "https://brilliant-ganache-418aa1.netlify.app/inscription.html",
   ];
 
   const splitter = new RecursiveCharacterTextSplitter({
