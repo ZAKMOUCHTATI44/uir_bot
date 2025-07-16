@@ -15,10 +15,30 @@ import { getVectoreStore } from "./vector";
 import { PostgresChatMessageHistory } from "@langchain/community/stores/message/postgres";
 require("dotenv").config();
 
+// Greeting detection setup
 const GREETINGS = [
-  "bonjour", "bonsoir", "salut", "slt", "hello", "hi", "hey", "yoo", "salam", "slm",
-  "salem", "salam alaykoum", "salam aleykoum", "salem alikoum", "salam alikoum",
-  "azul", "allo", "yo", "good morning", "good evening", "morning", "evening",
+  "bonjour",
+  "bonsoir",
+  "salut",
+  "slt",
+  "hello",
+  "hi",
+  "hey",
+  "yoo",
+  "salam",
+  "slm",
+  "salem",
+  "salam alaykoum",
+  "salam aleykoum",
+  "salem alikoum",
+  "salam alikoum",
+  "azul", // Tamazight (Berber greeting)
+  "allo", // Like “hello” on the phone
+  "yo", // Informal
+  "good morning",
+  "good evening",
+  "morning",
+  "evening",
 ];
 
 function containsGreeting(text: string): boolean {
@@ -35,28 +55,23 @@ function isOnlyGreeting(text: string): boolean {
 }
 
 export const mainFunction = async (userInput: string, phoneNumber: string) => {
-  console.log("User input:", userInput);
-  console.log("Phone number/sessionId:", phoneNumber);
-
   // Case 1: Greeting only
   if (isOnlyGreeting(userInput)) {
-    console.log("Detected a greeting message.");
     return `Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?`;
   }
 
-  // Vector store and retriever setup
-  console.log("Initializing vector store...");
+  // Set up vector store & retriever
   const vectorStore = await getVectoreStore();
   const retriever = vectorStore.asRetriever();
-  console.log("Vector store initialized.");
 
+  // Converts retrieved docs into string
   const convertDocsToString = (documents: Document[]): string => {
-    console.log("Converting retrieved documents to string...");
     return documents
       .map((document) => `<doc>\n${document.pageContent}\n</doc>`)
       .join("\n");
   };
 
+  // Rephrase user input into standalone question
   const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
 
 Sinon, reformulez la question comme une question autonome sans mentionner la conversation précédente.`;
@@ -64,7 +79,10 @@ Sinon, reformulez la question comme une question autonome sans mentionner la con
   const rephraseQuestionChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", REPHRASE_QUESTION_SYSTEM_TEMPLATE],
     new MessagesPlaceholder("history"),
-    ["human", "Rephrase the following question as a standalone question:\n{question}"],
+    [
+      "human",
+      "Rephrase the following question as a standalone question:\n{question}",
+    ],
   ]);
 
   const rephraseQuestionChain = RunnableSequence.from([
@@ -73,6 +91,7 @@ Sinon, reformulez la question comme une question autonome sans mentionner la con
     new StringOutputParser(),
   ]);
 
+  // Answer generation with context
   const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment, professionnellement, et uniquement à partir des informations fournies dans le contexte ci-dessous.
 
 Si vous ne trouvez pas l'information dans le contexte, dites simplement :
@@ -85,41 +104,33 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
   const answerGenerationChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", ANSWER_CHAIN_SYSTEM_TEMPLATE],
     new MessagesPlaceholder("history"),
-    ["human", "Now, answer this question using the previous context and chat history:\n{standalone_question}"],
+    [
+      "human",
+      "Now, answer this question using the previous context and chat history:\n{standalone_question}",
+    ],
   ]);
 
+  // Document retrieval chain
   const documentRetrievalChain = RunnableSequence.from([
-    (input) => {
-      console.log("Retrieving documents for:", input);
-      return input.standalone_question;
-    },
+    (input) => input.standalone_question,
     retriever,
-    (docs: Document[]) => {
-      console.log(`Retrieved ${docs.length} documents.`);
-      return convertDocsToString(docs);
-    },
+    convertDocsToString,
   ]);
 
+  // Main question-answering chain
   const conversationalRetrievalChain = RunnableSequence.from([
     RunnablePassthrough.assign({
-      standalone_question: async (input) => {
-        const rephrased = await rephraseQuestionChain.invoke({ question: input.question });
-        console.log("Standalone question:", rephrased);
-        return rephrased;
-      },
+      standalone_question: rephraseQuestionChain,
     }),
     RunnablePassthrough.assign({
-      context: async (input) => {
-        const context = await documentRetrievalChain.invoke(input);
-        console.log("Retrieved context:", context.substring(0, 500), "...");
-        return context;
-      },
+      context: documentRetrievalChain,
     }),
     answerGenerationChainPrompt,
     new ChatOpenAI({ modelName: "gpt-3.5-turbo" }),
     new StringOutputParser(),
   ]);
 
+  // Set up Postgres history storage
   const poolConfig = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
@@ -128,25 +139,32 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
     database: process.env.DB_NAME,
   };
 
-  console.log("Initializing PostgreSQL pool...");
   const pool = new pg.Pool(poolConfig);
 
   const finalRetrievalChain = new RunnableWithMessageHistory({
     runnable: conversationalRetrievalChain,
     getMessageHistory: async (sessionId) => {
-      console.log("Fetching message history for session:", sessionId);
-      return new PostgresChatMessageHistory({ sessionId, pool });
+      const chatHistory = new PostgresChatMessageHistory({
+        sessionId,
+        pool,
+      });
+
+      console.log(chatHistory)
+      return chatHistory;
     },
     historyMessagesKey: "history",
     inputMessagesKey: "question",
   });
 
-  console.log("Invoking the final chain...");
+  // Run the full chain
   const finalResult = await finalRetrievalChain.invoke(
-    { question: userInput },
-    { configurable: { sessionId: phoneNumber } }
+    {
+      question: userInput,
+    },
+    {
+      configurable: { sessionId: phoneNumber },
+    }
   );
 
-  console.log("Final result:", finalResult);
   return finalResult;
 };
