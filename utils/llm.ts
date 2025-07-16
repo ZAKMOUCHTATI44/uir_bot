@@ -55,9 +55,11 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
 
   // Convert documents to string
   const convertDocsToString = (documents: Document[]): string => {
-    return documents
+    const docs = documents
       .map((document) => `<doc>\n${document.pageContent}\n</doc>`)
       .join("\n");
+    console.log(docs);
+    return docs;
   };
 
   // Rephrase question prompt
