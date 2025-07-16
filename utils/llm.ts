@@ -117,15 +117,33 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
     convertDocsToString,
   ]);
 
-  // Main question-answering chain
+  // Modify your conversationalRetrievalChain to include logging
   const conversationalRetrievalChain = RunnableSequence.from([
     RunnablePassthrough.assign({
       standalone_question: rephraseQuestionChain,
     }),
+    {
+      standalone_question: (input) => {
+        console.log("STANDALONE QUESTION:", input.standalone_question);
+        return input.standalone_question;
+      },
+      originalInput: (input) => input,
+    },
     RunnablePassthrough.assign({
       context: documentRetrievalChain,
     }),
+    {
+      context: (input) => {
+        console.log("RETRIEVED CONTEXT:", input.context);
+        return input.context;
+      },
+      standalone_question: (input) => input.originalInput.standalone_question,
+    },
     answerGenerationChainPrompt,
+    (input) => {
+      console.log("ANSWER GENERATION PROMPT:", JSON.stringify(input, null, 2));
+      return input;
+    },
     new ChatOpenAI({ modelName: "gpt-3.5-turbo" }),
     new StringOutputParser(),
   ]);
@@ -149,7 +167,6 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
         pool,
       });
 
-      console.log(chatHistory)
       return chatHistory;
     },
     historyMessagesKey: "history",
