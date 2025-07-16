@@ -8,28 +8,28 @@ import { getVectoreStore } from "./vector";
 import { link } from "fs";
 const main = async () => {
   const links = [
-    "https://snazzy-brioche-80dbb5.netlify.app/",
-    "https://snazzy-brioche-80dbb5.netlify.app/dossier-dinscription",
-    "https://snazzy-brioche-80dbb5.netlify.app/frais-de-scolarite",
-    "https://snazzy-brioche-80dbb5.netlify.app/frais-hebergement.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/mot-du-president",
-    "https://snazzy-brioche-80dbb5.netlify.app/calendrier-des-concours",
-    "https://snazzy-brioche-80dbb5.netlify.app/general.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/list-offres.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/contact.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/sport-loisir.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/services-annexes.html",
-    "https://snazzy-brioche-80dbb5.netlify.app/admission.html",
-    "https://brilliant-ganache-418aa1.netlify.app/bourse.html",
-    "https://brilliant-ganache-418aa1.netlify.app/master.html",
-    "https://brilliant-ganache-418aa1.netlify.app/inscription.html",
-    "https://brilliant-ganache-418aa1.netlify.app/listing-master.html",
-    "https://brilliant-ganache-418aa1.netlify.app/cours-post-bac.html",
-    "https://brilliant-ganache-418aa1.netlify.app/cours-master.html",
-    "https://brilliant-ganache-418aa1.netlify.app/livret-institutionnel.html"
+    "https://brilliant-ganache-418aa1.netlify.app?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/dossier-dinscription?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/frais-de-scolarite?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/frais-hebergement.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/mot-du-president?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/calendrier-des-concours?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/general.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/list-offres.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/contact.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/sport-loisir.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/services-annexes.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/admission.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/bourse.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/master.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/inscription.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/listing-master.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/cours-post-bac.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/cours-master.html?v=10",
+    "https://brilliant-ganache-418aa1.netlify.app/livret-institutionnel.html?v=10",
   ];
 
-  console.log(links.length)
+  console.log(links.length);
 
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 1000,
