@@ -72,10 +72,11 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
   };
 
   // Rephrase user input into standalone question
-  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
+  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. 
 
-Sinon, reformulez la question comme une question autonome sans mentionner la conversation précédente.`;
-
+  Reformulez la question suivante comme une question autonome et complète, en conservant le sens original mais sans faire référence à la conversation précédente. 
+  
+  Si la question est déjà autonome, répétez-la telle quelle sans ajouter de contexte.`;
   const rephraseQuestionChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", REPHRASE_QUESTION_SYSTEM_TEMPLATE],
     new MessagesPlaceholder("history"),
@@ -92,14 +93,16 @@ Sinon, reformulez la question comme une question autonome sans mentionner la con
   ]);
 
   // Answer generation with context
-  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment, professionnellement, et uniquement à partir des informations fournies dans le contexte ci-dessous.
+  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment et professionnellement en utilisant exclusivement les informations fournies dans le contexte.
 
-Si vous ne trouvez pas l'information dans le contexte, dites simplement :
-"Pouvez-vous reformuler cette question ?"
-
-<context>
-{context}
-</context>`;
+  <context>
+  {context}
+  </context>
+  
+  Si la réponse n'est pas clairement présente dans le contexte, dites:
+  "Je n'ai pas trouvé d'informations précises à ce sujet dans notre base de données. Pourriez-vous reformuler votre question ou me poser une question plus générale sur l'Université Internationale de Rabat ?"
+  
+  Ne répétez jamais la question de l'utilisateur telle quelle.`;
 
   const answerGenerationChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", ANSWER_CHAIN_SYSTEM_TEMPLATE],
@@ -117,34 +120,16 @@ Si vous ne trouvez pas l'information dans le contexte, dites simplement :
     convertDocsToString,
   ]);
 
-  // Modify your conversationalRetrievalChain to include logging
+  // Main question-answering chain
   const conversationalRetrievalChain = RunnableSequence.from([
     RunnablePassthrough.assign({
       standalone_question: rephraseQuestionChain,
     }),
-    {
-      standalone_question: (input) => {
-        console.log("STANDALONE QUESTION:", input.standalone_question);
-        return input.standalone_question;
-      },
-      originalInput: (input) => input,
-    },
     RunnablePassthrough.assign({
       context: documentRetrievalChain,
     }),
-    {
-      context: (input) => {
-        console.log("RETRIEVED CONTEXT:", input.context);
-        return input.context;
-      },
-      standalone_question: (input) => input.originalInput.standalone_question,
-    },
     answerGenerationChainPrompt,
-    (input) => {
-      console.log("ANSWER GENERATION PROMPT:", JSON.stringify(input, null, 2));
-      return input;
-    },
-    new ChatOpenAI({ modelName: "gpt-3.5-turbo" }),
+    new ChatOpenAI({ modelName: "gpt-4" }),
     new StringOutputParser(),
   ]);
 
