@@ -15,68 +15,55 @@ import { getVectoreStore } from "./vector";
 import { PostgresChatMessageHistory } from "@langchain/community/stores/message/postgres";
 require("dotenv").config();
 
-// Greeting detection setup
-const GREETINGS = [
-  "bonjour",
-  "bonsoir",
-  "salut",
-  "slt",
-  "hello",
-  "hi",
-  "hey",
-  "yoo",
-  "salam",
-  "slm",
-  "salem",
-  "salam alaykoum",
-  "salam aleykoum",
-  "salem alikoum",
-  "salam alikoum",
-  "azul", // Tamazight (Berber greeting)
-  "allo", // Like “hello” on the phone
-  "yo", // Informal
-  "good morning",
-  "good evening",
-  "morning",
-  "evening",
-];
+// ✅ Intent Classification Chain
+const classifyPrompt = ChatPromptTemplate.fromMessages([
+  [
+    "system",
+    `Vous êtes un classificateur. Déterminez l'intention principale du message de l'utilisateur.
+Choisissez une seule catégorie parmi :
+- "greeting" (si c'est une salutation)
+- "thanks" (si c'est un remerciement ou une fin polie)
+- "question" (si c'est une demande d'information)
+- "other" (si aucun des cas ci-dessus ne s'applique)
+Répondez uniquement par une de ces étiquettes, sans explication.`,
+  ],
+  ["human", "{input}"],
+]);
 
-function containsGreeting(text: string): boolean {
-  const lowered = text.toLowerCase();
-  return GREETINGS.some((greet) => lowered.includes(greet));
-}
+const classifyChain = RunnableSequence.from([
+  classifyPrompt,
+  new ChatOpenAI({ temperature: 0, modelName: "gpt-3.5-turbo" }),
+  new StringOutputParser(),
+]);
 
-function isOnlyGreeting(text: string): boolean {
-  const lowered = text.toLowerCase().trim();
-  return GREETINGS.some((greet) => {
-    const regex = new RegExp(`^${greet}[\\s!.,?]*$`, "i");
-    return regex.test(lowered);
-  });
-}
-
+// ✅ Main Function
 export const mainFunction = async (userInput: string, phoneNumber: string) => {
-  // Case 1: Greeting only
-  if (isOnlyGreeting(userInput)) {
-    return `Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou peut-être cherchez-vous des informations générales sur l'université ?`;
+  // Detect user intent
+  const intent = await classifyChain.invoke({ input: userInput });
+
+  if (intent === "greeting") {
+    return `Bonjour! Je suis l'assistant virtuel de l'Université Internationale de Rabat. Comment puis-je vous aider aujourd'hui ? Avez-vous des questions sur nos programmes, les admissions ou d'autres services ?`;
   }
 
-  // Set up vector store & retriever
+  if (intent === "thanks") {
+    return "Je reste à votre disposition si vous avez d’autres questions.";
+  }
+
+  // Vector store setup
   const vectorStore = await getVectoreStore();
   const retriever = vectorStore.asRetriever();
 
-  // Converts retrieved docs into string
+  // Convert documents to string
   const convertDocsToString = (documents: Document[]): string => {
     return documents
       .map((document) => `<doc>\n${document.pageContent}\n</doc>`)
       .join("\n");
   };
 
-  // Rephrase user input into standalone question
-  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. 
+  // Rephrase question prompt
+  const REPHRASE_QUESTION_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat.
+Reformulez la question suivante comme une question autonome, sans mentionner la conversation précédente.`;
 
-  Reformulez la question suivante comme une question autonome et complète, en conservant le sens original mais sans faire référence à la conversation précédente. 
-  
-  Si la question est déjà autonome, répétez-la telle quelle sans ajouter de contexte.`;
   const rephraseQuestionChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", REPHRASE_QUESTION_SYSTEM_TEMPLATE],
     new MessagesPlaceholder("history"),
@@ -92,17 +79,15 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
     new StringOutputParser(),
   ]);
 
-  // Answer generation with context
-  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment et professionnellement en utilisant exclusivement les informations fournies dans le contexte.
+  // Answer generation prompt
+  const ANSWER_CHAIN_SYSTEM_TEMPLATE = `Vous êtes l'assistant virtuel de l'Université Internationale de Rabat. Répondez poliment, professionnellement, et uniquement à partir des informations fournies dans le contexte ci-dessous.
 
-  <context>
-  {context}
-  </context>
-  
-  Si la réponse n'est pas clairement présente dans le contexte, dites:
-  "Je n'ai pas trouvé d'informations précises à ce sujet dans notre base de données. Pourriez-vous reformuler votre question ou me poser une question plus générale sur l'Université Internationale de Rabat ?"
-  
-  Ne répétez jamais la question de l'utilisateur telle quelle.`;
+Si vous ne trouvez pas l'information dans le contexte, dites simplement :
+"Pouvez-vous reformuler cette question ?"
+
+<context>
+{context}
+</context>`;
 
   const answerGenerationChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", ANSWER_CHAIN_SYSTEM_TEMPLATE],
@@ -113,14 +98,14 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
     ],
   ]);
 
-  // Document retrieval chain
+  // Retrieval chain
   const documentRetrievalChain = RunnableSequence.from([
     (input) => input.standalone_question,
     retriever,
     convertDocsToString,
   ]);
 
-  // Main question-answering chain
+  // Final QA chain
   const conversationalRetrievalChain = RunnableSequence.from([
     RunnablePassthrough.assign({
       standalone_question: rephraseQuestionChain,
@@ -129,11 +114,11 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
       context: documentRetrievalChain,
     }),
     answerGenerationChainPrompt,
-    new ChatOpenAI({ modelName: "gpt-4" }),
+    new ChatOpenAI({ modelName: "gpt-3.5-turbo" }),
     new StringOutputParser(),
   ]);
 
-  // Set up Postgres history storage
+  // Postgres message history setup
   const poolConfig = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
@@ -151,20 +136,19 @@ export const mainFunction = async (userInput: string, phoneNumber: string) => {
         sessionId,
         pool,
       });
-
       return chatHistory;
     },
     historyMessagesKey: "history",
     inputMessagesKey: "question",
   });
 
-  // Run the full chain
+  // Invoke the full chain
   const finalResult = await finalRetrievalChain.invoke(
+    { question: userInput },
     {
-      question: userInput,
-    },
-    {
-      configurable: { sessionId: phoneNumber },
+      configurable: {
+        sessionId: phoneNumber,
+      },
     }
   );
 
