@@ -27,6 +27,7 @@ const main = async () => {
     "https://brilliant-ganache-418aa1.netlify.app/cours-post-bac.html?v=20",
     "https://brilliant-ganache-418aa1.netlify.app/cours-master.html?v=20",
     "https://brilliant-ganache-418aa1.netlify.app/livret-institutionnel.html?v=20",
+    'https://brilliant-ganache-418aa1.netlify.app/team.html'
   ];
 
   console.log(links.length);
